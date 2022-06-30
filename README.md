@@ -59,7 +59,6 @@ At this stage depending on which version of gcc you try to compile, you will see
 apt-get install flex
 # clean directory, run configure again
 ```
-
 #### `lex.cc: error: 'loc' may be used uninitialized`
 add `--disable-werror` during configure
 
@@ -67,10 +66,24 @@ add `--disable-werror` during configure
 `git apply 3.patch`
 
 #### `reload1.c: error: use of an operand of type 'bool' in 'operator++' is forbidden in C++17
-provide older CC and CXX during `configure`.
+Use older CC and CXX during `configure`.
+
+#### `error: too many template-parameter-lists`
+Use older CC and CXX during `configure`? 
 
 #### `error: ‘const char* libc_name_p(const char*, unsigned int)’ redeclared inline with ‘gnu_inline’`
 depending on the version of your code need to `git apply 5-2014.patch` or `git apply 5-2015.patch`. 
+
+#### `error: ‘isl_map_n_out’ was not declared in this scope`
+add `--without-isl` during configure
+
+#### `sys/ustat.h: no such file or directory`
+`git apply 4.patch`
+
+#### ... `size of array is negative`
+`git apply 1.patch`
+`git apply 2.patch`
+
 
 ## make install
 After compiling to get real gcc binary, you can run `make DESTDIR=/path/to/some/dir install`.
